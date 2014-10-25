@@ -21,6 +21,7 @@ angular.module('angularjsApp')
                 var newRecipe = new Recipe();
                 newRecipe.set("name", $scope.recipeTitle);
                 newRecipe.set("user", $rootScope.currentUser);
+                newRecipe.set("username", $rootScope.currentUser.getUsername());
                 newRecipe.set("description", $scope.recipeDescription);
                 
                 var fileUploadControl = $("#recipePicture")[0];
