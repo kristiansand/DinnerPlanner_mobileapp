@@ -17,6 +17,7 @@ angular.module('angularjsApp')
       
       $scope.addRecipe = function () {
             if(typeof($scope.recipeTitle) != 'undefined'){
+                if($("#recipePicture")[0] != null){
                 var Recipe = Parse.Object.extend("Recipe");
                 var newRecipe = new Recipe();
                 newRecipe.set("name", $scope.recipeTitle);
@@ -33,16 +34,24 @@ angular.module('angularjsApp')
                 }
                 newRecipe.save(null,{
                     success: function(recipe){
-                        alert("Your recipe is created!");   
+                        alert("Your recipe is created!");
+                        $('#addNewRecipeModal').modal("hide");
                     },
                     error: function(recipe, error){
                         alert(error.message);
                     }
                 });
                 
-                
-                
+                }
+                else{
+                    alert("You must provide a picture!");   
+                }
             }
+                else{
+                    alert("You must provide a title!");   
+                }
+                
+            
           
       }
     

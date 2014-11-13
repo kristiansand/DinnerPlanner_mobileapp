@@ -32,6 +32,7 @@ angular.module('angularjsApp')
      function getNewsfeed() {
         var Recipe = Parse.Object.extend("Recipe");
         var recipeQuery = new Parse.Query(Recipe);
+         recipeQuery.descending("createdAt");
         recipeQuery.find({
             success: function(recipes){
                 $scope.recipeList.length = 0;
@@ -42,7 +43,7 @@ angular.module('angularjsApp')
                 }
             },
             error: function(error){
-                alert(error.message);   
+                console.log(error.message);   
             }
         });
          
